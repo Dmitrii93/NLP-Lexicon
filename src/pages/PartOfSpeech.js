@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Plus } from 'react-bootstrap-icons';
 import { Group } from '../components/Group';
 
@@ -10,12 +10,15 @@ export const PartOfSpeech = ({ part }) => {
                     return <Group key={i} index={i} field={field} item={item} />;
                 })}
                 <Row>
-                    <Col xs={3} className='d-flex justify-content-center align-items-center gap-2 py-2'>
+                    <Col
+                        xs={{ span: 3, offset: 3 }}
+                        className='d-flex justify-content-center align-items-center gap-2 py-2'
+                    >
                         <Button
                             className='p-0 rounded-circle d-flex justify-content-center align-items-center'
-                            style={{ height: '32px', width: '32px' }}
+                            style={{ height: '21px', width: '21px' }}
                         >
-                            <Plus size={26} />
+                            <Plus size={21} />
                         </Button>
                         ADD VALUE
                     </Col>
@@ -32,6 +35,11 @@ export const PartOfSpeech = ({ part }) => {
                 <Col className='d-flex justify-content-center fw-bolder'>COMMENTS</Col>
             </Row>
             {groups}
+            <Row>
+                <Col className='d-flex justify-content-end fw-bolder' xs={{ span: 1, offset: 11 }}>
+                    <Button variant='primary'>Submit</Button>
+                </Col>
+            </Row>
         </Container>
     );
 };

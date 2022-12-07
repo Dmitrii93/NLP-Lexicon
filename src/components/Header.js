@@ -1,9 +1,19 @@
+import { useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { parts } from '../mocks/parts.mock';
 export const Header = () => {
+    const [route, setRoute] = useState(window.location.pathname);
     const links = Object.keys(parts).map((part, i) => (
-        <Nav.Link key={i} as={Link} to={`/${part}`}>
+        <Nav.Link
+            key={i}
+            as={Link}
+            to={`/${part}`}
+            onClick={() => {
+                setRoute(`/${part}`);
+            }}
+            className={{ 'text-primary': route === `/${part}` }}
+        >
             {part[0].toUpperCase() + part.slice(1)}
         </Nav.Link>
     ));
