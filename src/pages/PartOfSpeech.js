@@ -1,8 +1,11 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Plus } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 import { Group } from '../components/Group';
+import { useRoute } from '../contexts/RouteContext';
 
-export const PartOfSpeech = ({ part }) => {
+export const PartOfSpeech = ({ part, prev, next }) => {
+    const { route, setRoute } = useRoute();
     const groups = Object.keys(part).map((field, i) => {
         return (
             <div key={i} className='border border-1 my-2 pt-1'>
@@ -35,6 +38,33 @@ export const PartOfSpeech = ({ part }) => {
                 <Col className='d-flex justify-content-center fw-bolder'>COMMENTS</Col>
             </Row>
             {groups}
+            <Row>
+                <Col className='d-flex justify-content-end fw-bolder gap-3 mb-2' xs={{ span: 1, offset: 11 }}>
+                    <Button
+                        className={{ disabled: !prev }}
+                        variant={prev ? 'primary' : 'secondary'}
+                        as={Link}
+                        to={`/${prev}`}
+                        onClick={() => {
+                            setRoute(`/${prev}`);
+                        }}
+                    >
+                        Previous
+                    </Button>
+
+                    <Button
+                        className={{ disabled: !next }}
+                        variant={next ? 'primary' : 'secondary'}
+                        as={Link}
+                        to={`/${next}`}
+                        onClick={() => {
+                            setRoute(`/${next}`);
+                        }}
+                    >
+                        Next
+                    </Button>
+                </Col>
+            </Row>
             <Row>
                 <Col className='d-flex justify-content-end fw-bolder' xs={{ span: 1, offset: 11 }}>
                     <Button variant='primary'>Submit</Button>

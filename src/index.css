@@ -18,3 +18,7 @@ code {
 .nav-link:hover {
   color: rgba(var(--bs-primary-rgb)) !important;
 }
+
+.disabled {
+  pointer-events: none;
+}

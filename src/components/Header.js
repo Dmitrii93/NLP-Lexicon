@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useRoute } from '../contexts/RouteContext';
 import { parts } from '../mocks/parts.mock';
 export const Header = () => {
-    const [route, setRoute] = useState(window.location.pathname);
+    const { route, setRoute } = useRoute();
     const links = Object.keys(parts).map((part, i) => (
         <Nav.Link
             key={i}
