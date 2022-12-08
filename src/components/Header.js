@@ -18,7 +18,7 @@ export const Header = () => {
         </Nav.Link>
     ));
     return (
-        <Navbar bg='light'>
+        <Navbar bg='light' className='sticky-top'>
             <Container fluid>
                 <Navbar.Brand as={Link} to='/'>
                     NLP Lexicon
