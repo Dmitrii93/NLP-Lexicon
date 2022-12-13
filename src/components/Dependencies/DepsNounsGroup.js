@@ -1,6 +1,6 @@
 import { Col, Form, Row } from 'react-bootstrap';
 
-export const Group = ({ field, item, index }) => {
+export const DepsNounsGroup = ({ field, item, index }) => {
     return (
         <Row className='align-items-center mb-1'>
             <Col className='d-flex justify-content-center'>
@@ -8,10 +8,10 @@ export const Group = ({ field, item, index }) => {
             </Col>
             <Col className='d-flex justify-content-center'>{item}</Col>
             <Col className='d-flex justify-content-center'>
-                <Form.Check type='checkbox' />
+                <Form.Control type='number' disabled={field.toLowerCase() === 'number'} />
             </Col>
             <Col className='d-flex justify-content-center'>
-                <Form.Control as='textarea' rows={1} className='me-2' />
+                <Form.Control type='number' disabled={field.toLowerCase() === 'case'} />
             </Col>
         </Row>
     );

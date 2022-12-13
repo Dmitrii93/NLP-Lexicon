@@ -1,20 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Home } from './pages/Home';
-import { PartOfSpeech } from './pages/PartOfSpeech';
-import { parts } from './mocks/parts.mock';
 import { RouteProvider } from './contexts/RouteContext';
+import { Section } from './pages/Section';
 
 function App() {
-    const keys = Object.keys(parts);
-    const routes = keys.map((item, i) => {
-        return (
-            <Route
-                key={i}
-                path={`/${item}`}
-                element={<PartOfSpeech part={parts[item]} prev={keys[i - 1]} next={keys[i + 1]} />}
-            />
-        );
+    const sections = ['Morphological Features', 'Morphological Dependencies', 'Morphological Rules'];
+    const routes = sections.map((item) => {
+        return <Route key={item} path={`/${item.split(' ')[1].toLocaleLowerCase()}/:part`} element={<Section />} />;
     });
     return (
         <RouteProvider>
